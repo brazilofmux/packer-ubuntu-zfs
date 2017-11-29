@@ -33,7 +33,8 @@
 				"device_name": "/dev/xvdf",
 				"delete_on_termination": true,
 				"volume_size": 8,
-				"volume_type": "gp2"
+				"volume_type": "gp2",
+				"encrypted": true
 			}
 		],
 
