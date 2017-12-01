@@ -37,9 +37,9 @@ sudo zfs create \
 sudo zfs create \
 	-o canmount=noauto \
 	-o mountpoint=/ \
-	rpool/ROOT/ubuntu
+	rpool/ROOT/debian
 
-sudo zfs mount rpool/ROOT/ubuntu
+sudo zfs mount rpool/ROOT/debian
 
 # /home
 sudo zfs create \
@@ -85,8 +85,8 @@ sudo zfs create \
 sudo zpool status
 sudo zfs list
 
-# Bootstrap Ubuntu Yakkety into /mnt
-sudo debootstrap --arch amd64 xenial /mnt
+# Bootstrap Debian Stretch into /mnt
+sudo debootstrap --arch amd64 stretch /mnt
 sudo cp /tmp/sources.list /mnt/etc/apt/sources.list
 
 # Copy the zpool cache

@@ -11,14 +11,17 @@ echo 'grub-pc grub-pc/install_devices select' | debconf-set-selections
 
 # Install various packages needed for a booting system
 DEBIAN_FRONTEND=noninteractive apt-get install -y \
-	linux-image-generic \
-	linux-headers-generic \
+	linux-image-amd64 \
+	linux-headers-amd64 \
 	grub-pc \
 	zfs-zed \
 	zfsutils-linux \
 	zfs-initramfs \
 	zfs-dkms \
-	gdisk
+	cloud-init \
+	gdisk \
+	locales
+ln -s /proc/mounts /etc/mtab
 
 # Set the locale to en_US.UTF-8
 locale-gen --purge "en_US.UTF-8"
@@ -50,5 +53,5 @@ update-grub
 } >> /etc/network/interfaces
 
 # Install standard packages
-DEBIAN_FRONTEND=noninteractive apt-get install -y ubuntu-standard
-DEBIAN_FRONTEND=noninteractive apt-get install -y cloud-init=0.7.7~bzr1212-0ubuntu1
+DEBIAN_FRONTEND=noninteractive tasksel install standard
+DEBIAN_FRONTEND=noninteractive apt-get install -y cloud-init
